@@ -4,6 +4,9 @@ from telebot import types
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 import os
 import time
+from decouple import config
+
+TOKEN = config("TOKEN", cast=str, default="пусто")
 
 
 def category(uid):
@@ -74,7 +77,7 @@ def choice(uid, call):
             list_key.clear()
 
 
-bot = telebot.TeleBot("6952178406:AAFAkJKhuEBzSoSdd1DpWjAwfupWpzPRWq4")
+bot = telebot.TeleBot(TOKEN)
 command = telebot.types.BotCommand("start", "Показать категории")
 bot.set_my_commands([command])
 
